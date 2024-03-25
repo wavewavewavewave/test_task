@@ -13,7 +13,7 @@ export const columns: (ColumnType<DataType> | ColumnGroupType<DataType>)[] = [
         title: 'Alchool',
         dataIndex: 'alchool',
         key: 'alchool',
-        sorter: (a, b) => parseFloat(a.alchool) -parseFloat(b.alchool),
+        sorter: (a, b) => parseFloat(a.alchool) - parseFloat(b.alchool),
     },
     {
         title: 'Description',
