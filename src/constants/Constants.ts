@@ -19,7 +19,7 @@ export const columns: (ColumnType<DataType> | ColumnGroupType<DataType>)[] = [
         title: 'Description',
         dataIndex: 'description',
         key: 'description',
-        // width: '40%'
+        width: '40%'
     },
     {
         title: 'Country',

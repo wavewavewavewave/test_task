@@ -12,8 +12,10 @@ function App() {
     const [loading, setLoading] = useState<boolean>(true);
     const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
     const [tableRowIndex, setTableRowIndex] = useState<number | undefined>(undefined)
+    const [rec, setRec] = useState()
 
-    const handleRowClick = (rowIndex: number | undefined) => {
+    const handleRowClick = (rowIndex: number | undefined, record: any) => {
+        setRec(record)
         setIsModalVisible(true);
         setTableRowIndex(rowIndex)
     }
@@ -55,7 +57,9 @@ function App() {
                            handleModalClose={handleModalClose}
                            isModalVisible={isModalVisible}
                            handleRowClick={handleRowClick}
-                           tableRowIndex={tableRowIndex}/>
+                           tableRowIndex={tableRowIndex}
+                           rec={rec}
+                />
             </div>
         </div>
     );

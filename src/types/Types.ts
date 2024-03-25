@@ -12,8 +12,9 @@ export type TableType = {
     loading: boolean;
     isModalVisible: boolean;
     handleModalClose: () => void;
-    handleRowClick: (rowIndex: number|undefined) => void;
+    handleRowClick: (rowIndex: number|undefined, record: any) => void;
     tableRowIndex: number|undefined
+    rec: any
 }
 
 export type SearchType = {
