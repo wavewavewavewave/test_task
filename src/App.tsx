@@ -4,29 +4,27 @@ import './App.css';
 import Search from "./components/Search/Search";
 import {Header} from "./components/Header/Header";
 import {TableData} from "./components/Table/Table";
-import {data} from "./constants/Constants";
 import {DataType} from "./types/Types";
 import {beersAPI} from "./api/beers-api";
 
 function App() {
     const [search, setSearch] = useState('');
-    const [beers, setBeers] = useState<DataType[]>(data)
-    const [test, setTest] = useState<DataType[]>([])
+    const [beers, setBeers] = useState<DataType[]>([])
     const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
         beersAPI.getAllBeers().then(res => {
-            setTest(res.data)
+            setBeers(res.data)
             setLoading(false)
         }).catch(error => {
             console.log(error)
-        }).finally()
+        })
     }, [])
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (!event.target.value) {
-            setBeers(data);
+            setBeers(beers);
             setSearch('');
             return;
         }
@@ -43,7 +41,7 @@ function App() {
             <Header/>
             <div style={{padding: '20px'}}>
                 <Search onChange={handleOnChange} value={search}/>
-                <TableData beers={test} loading={loading}/>
+                <TableData beers={beers} loading={loading}/>
             </div>
         </div>
     );
