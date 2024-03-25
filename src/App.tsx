@@ -10,6 +10,17 @@ function App() {
     const [beers, setBeers] = useState<DataType[]>([])
     const [initialBeers, setInitialBeers] = useState<DataType[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+    const [tableRowIndex, setTableRowIndex] = useState<number | undefined>(undefined)
+
+    const handleRowClick = (rowIndex: number | undefined) => {
+        setIsModalVisible(true);
+        setTableRowIndex(rowIndex)
+    }
+
+    const handleModalClose = () => {
+        setIsModalVisible(false);
+    }
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (!event.target.value) {
@@ -40,7 +51,11 @@ function App() {
             <Header/>
             <div style={{padding: '20px'}}>
                 <Search onChange={handleOnChange} value={search}/>
-                <TableData beers={beers} loading={loading}/>
+                <TableData beers={beers} loading={loading}
+                           handleModalClose={handleModalClose}
+                           isModalVisible={isModalVisible}
+                           handleRowClick={handleRowClick}
+                           tableRowIndex={tableRowIndex}/>
             </div>
         </div>
     );

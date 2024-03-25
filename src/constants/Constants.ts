@@ -7,17 +7,19 @@ export const columns: (ColumnType<DataType> | ColumnGroupType<DataType>)[] = [
         dataIndex: 'title',
         key: 'title',
         sorter: (a: any, b: any) => a.title.length - b.title.length,
+        width: '30%'
     },
     {
         title: 'Alchool',
         dataIndex: 'alchool',
         key: 'alchool',
-        sorter: (a: any, b: any) => a.alchool - b.alchool,
+        sorter: (a, b) => parseFloat(a.alchool) -parseFloat(b.alchool),
     },
     {
         title: 'Description',
         dataIndex: 'description',
         key: 'description',
+        // width: '40%'
     },
     {
         title: 'Country',
