@@ -7,17 +7,15 @@ import {beersAPI} from "./api/beers-api";
 
 function App() {
     const [search, setSearch] = useState<string>('');
-    const [beers, setBeers] = useState<DataType[]>([])
     const [initialBeers, setInitialBeers] = useState<DataType[]>([]);
+    const [beers, setBeers] = useState<DataType[]>([])
     const [loading, setLoading] = useState<boolean>(true);
     const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-    const [tableRowIndex, setTableRowIndex] = useState<number | undefined>(undefined)
-    const [rec, setRec] = useState()
+    const [beerModalDetails, setBeerModalDetails] = useState<DataType | undefined>()
 
-    const handleRowClick = (rowIndex: number | undefined, record: any) => {
-        setRec(record)
+    const handleRowClick = (record: DataType) => {
+        setBeerModalDetails(record)
         setIsModalVisible(true);
-        setTableRowIndex(rowIndex)
     }
 
     const handleModalClose = () => {
@@ -57,8 +55,7 @@ function App() {
                            handleModalClose={handleModalClose}
                            isModalVisible={isModalVisible}
                            handleRowClick={handleRowClick}
-                           tableRowIndex={tableRowIndex}
-                           rec={rec}
+                           beerModalDetails={beerModalDetails}
                 />
             </div>
         </div>

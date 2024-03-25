@@ -6,7 +6,7 @@ export const columns: (ColumnType<DataType> | ColumnGroupType<DataType>)[] = [
         title: 'Title',
         dataIndex: 'title',
         key: 'title',
-        sorter: (a: any, b: any) => a.title.length - b.title.length,
+        sorter: (a, b) => a.title.length - b.title.length,
         width: '30%'
     },
     {
@@ -83,7 +83,7 @@ export const columns: (ColumnType<DataType> | ColumnGroupType<DataType>)[] = [
                 value: 'malta'
             },
         ],
-        onFilter: (value: any, record) => record.country.startsWith(value),
+        onFilter: (value, record) => record.country.startsWith(String(value)),
         filterSearch: true,
     }
 ]

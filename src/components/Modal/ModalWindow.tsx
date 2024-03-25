@@ -2,7 +2,7 @@ import React from 'react';
 import {ModalType} from "../../types/Types";
 import {Modal} from "antd";
 
-export const ModalWidnow = ({isModalVisible, handleModalClose, data}: ModalType) => {
+export const ModalWindow = ({isModalVisible, handleModalClose, data}: ModalType) => {
     return (
         <Modal
             title='Beer Details'

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Col, Row, Table} from "antd";
 import {columns} from "../../constants/Constants";
-import {TableType} from "../../types/Types";
-import {ModalWidnow} from "../Modal/ModalWidnow";
+import {DataType, TableType} from "../../types/Types";
+import {ModalWindow} from "../Modal/ModalWindow";
 
 export const TableData = (props: TableType) => {
     const {
@@ -11,20 +11,21 @@ export const TableData = (props: TableType) => {
         isModalVisible,
         handleModalClose,
         handleRowClick,
-        tableRowIndex,
-        rec
+        beerModalDetails
     } = props
+
+    const handleOnRow = (record: DataType) => {
+        return {
+            onClick: () => handleRowClick(record)
+        };
+    };
 
     return (
         <Row>
             <Col xs={24}>
-                <Table dataSource={beers} loading={loading} columns={columns} onRow={(record, rowIndex) => {
-                    return {
-                        onClick: () => handleRowClick(rowIndex, record)
-                    }
-                }}/>
+                <Table dataSource={beers} loading={loading} columns={columns} onRow={handleOnRow}/>
             </Col>
-            <ModalWidnow isModalVisible={isModalVisible} handleModalClose={handleModalClose} data={rec}/>
+            <ModalWindow isModalVisible={isModalVisible} handleModalClose={handleModalClose} data={beerModalDetails}/>
         </Row>
     );
 };
