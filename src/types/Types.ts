@@ -8,7 +8,8 @@ export interface DataType {
 }
 
 export type TableType = {
-    beers: DataType[]
+    beers: DataType[];
+    loading: boolean;
 }
 
 export type SearchType = {

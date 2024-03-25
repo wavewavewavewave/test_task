@@ -3,11 +3,11 @@ import {Col, Row, Table} from "antd";
 import {columns} from "../../constants/Constants";
 import {TableType} from "../../types/Types";
 
-export const TableData = ({beers}: TableType) => {
+export const TableData = ({beers, loading}: TableType) => {
     return (
         <Row>
             <Col xs={24}>
-                <Table dataSource={beers} columns={columns}/>
+                <Table dataSource={beers} loading={loading} columns={columns}/>
             </Col>
         </Row>
     );

@@ -12,6 +12,17 @@ function App() {
     const [search, setSearch] = useState('');
     const [beers, setBeers] = useState<DataType[]>(data)
     const [test, setTest] = useState<DataType[]>([])
+    const [loading, setLoading] = useState(true);
+
+
+    useEffect(() => {
+        beersAPI.getAllBeers().then(res => {
+            setTest(res.data)
+            setLoading(false)
+        }).catch(error => {
+            console.log(error)
+        }).finally()
+    }, [])
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (!event.target.value) {
@@ -27,19 +38,12 @@ function App() {
             ))
     }
 
-    useEffect(() => {
-        beersAPI.getAllBeers().then(res => {
-            setTest(res.data)
-        })
-    }, [])
-    console.log(test, 'TEST')
-
     return (
         <div>
             <Header/>
             <div style={{padding: '20px'}}>
                 <Search onChange={handleOnChange} value={search}/>
-                <TableData beers={test}/>
+                <TableData beers={test} loading={loading}/>
             </div>
         </div>
     );
